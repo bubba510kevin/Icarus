@@ -1,0 +1,6 @@
+STRONTIUM, Rocke, and galileo need urls
+
+still need priv esclation and make sys crippling
+
+for later payloads there is a Security dll 
+

