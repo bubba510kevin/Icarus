@@ -1,0 +1,86 @@
+:naming
+
+    first stage paylods: 
+        main parts:
+            sandworm    (DLL) shellcode will be made by meterpriter 
+
+            :languages
+                C, C++, Assembly, C#
+
+            :size
+                20 - 50KB (in C & C++ with raw sockets) 20 - 80 with WinHTTP
+                50 - 200KB (C#)
+                5 - 15KB (NASM very hard)
+    
+    seccond stage:
+        main parts:
+            bliss   (EXE)   download and run Iron_man
+            Iron_man(DLL)   jumper to STRONTIUM [+]
+            APT_C_36(DLL)   is the lib for priv esclation
+            STRONTIUM(EXE) this is the PL4 download, admin, exclusion in oder admin, exclusion, download (base64 the exclusion step) [+][-]
+
+        :languages
+
+            C, C++, C#
+        
+        :size
+
+            1MB max (bliss)
+            no constraint (Iron_man & APT_C_36)
+        
+        :purpous
+            to download and run PL3
+        
+        :resion
+            it can be written in C, C++, or C# now so not as tight constraintes 
+
+    there will now be no more constraint on file size
+
+    PL3:
+        main parts:
+            Rocke   (DLL)
+            galileo (EXE)
+
+        :languages
+
+            C, C++, C#
+
+        :purpous
+            crippels the system in any way possable 
+        downloads PL4 Icarus
+
+    PL4:
+
+        main parts:
+
+            Icarus  (exe)   
+            burout  (DLL)   [will the shell for reverse TCP shell]
+            Rome    (sys)   [cant use c# and prob not C++ should use C]
+
+        :languages
+
+            C, C++, C#
+        
+        :purpous
+
+            Icarus:
+                put itself as start as system (MABYE do Trusted installer trick)
+                get system priv and (not dicided yet) Trusted installer
+                downloads Rome and burout 
+                will establish a reverse TCP shell and will use burout to interpret the commands
+                get Rome to Start-Boot (make a chesk for start-Boot frist)
+            
+            burout:
+
+                shell for Icarus (if rome is in boot-start run thrugh Rome)
+                holds built in commands (passer to the command line or powershell or Download command for more payloads)
+            
+            Rome:
+
+                find a way to get a shell (prob full custom and more restrited than reg)(but can make cutom syscalls for Direct hardware access, 
+                Read/write physical memory, Register interrupt handlers, Load privileged code, Can crash entire OS)
+                
+
+                
+
+
