@@ -47,20 +47,19 @@ __declspec(dllexport) void Pawn_Storm(){
     const char* exePath = str3;
 
     // Start the process
-    if (!CreateProcessA(
-            exePath,   // Application name
-            NULL,      // Command line arguments
-            NULL,      // Process handle not inheritable
-            NULL,      // Thread handle not inheritable
-            FALSE,     // Set handle inheritance to FALSE
-            0,         // No creation flags
-            NULL,      // Use parent's environment block
-            NULL,      // Use parent's starting directory 
-            &si,       // Pointer to STARTUPINFO structure
-            &pi)       // Pointer to PROCESS_INFORMATION structure
-    ) {
-        return 1;
-    }
+    CreateProcessA(
+        exePath,   // Application name
+        NULL,      // Command line arguments
+        NULL,      // Process handle not inheritable
+        NULL,      // Thread handle not inheritable
+        FALSE,     // Set handle inheritance to FALSE
+        0,         // No creation flags
+        NULL,      // Use parent's environment block
+        NULL,      // Use parent's starting directory 
+        &si,       // Pointer to STARTUPINFO structure
+        &pi
+    );       // Pointer to PROCESS_INFORMATION structure
+    
 
     // Wait until the process exits
     WaitForSingleObject(pi.hProcess, INFINITE);
