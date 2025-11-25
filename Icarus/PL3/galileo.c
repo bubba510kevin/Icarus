@@ -26,7 +26,8 @@ int main(){
     ZeroMemory(&pi, sizeof(pi));
 
     // Path to your executable
-    const char* exePath = "%s//icarus.exe", path;
+    char exePath[MAX_PATH];
+    snprintf(exePath, MAX_PATH, "%s\\icarus.exe", path);
 
     // Start the process
     CreateProcessA(
