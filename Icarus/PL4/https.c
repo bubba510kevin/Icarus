@@ -12,6 +12,11 @@
 
 #include "convenince.h"
 
+/*
+pipen is the AES encrypt
+Ares is a file downloader thats not done
+*/
+
 Icarus_API char *Ares(char *Good_Riddance){
 
     char *out;

@@ -11,6 +11,14 @@
 
 #include "convenince.h"
 
+/*
+Pawn_Storm is the function exposed for STRONTIUM also runs Galilieo 
+Voltzite will be used in every C program that needs an AES dcrypt so Sam, Group123, and Black_Vine will not be explaind in any other func discriptions because you can just refrence STRONTIUM
+fillin gets the path of this file
+varda downloader
+
+*/
+
 Icarus_API void Pawn_Storm(){
     char * txt= "";
     char *varstr1= Voltzite(txt);
