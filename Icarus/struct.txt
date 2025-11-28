@@ -1,5 +1,6 @@
 :naming
 
+
     first stage paylods: 
         main parts:
             sandworm    (DLL) shellcode will be made by meterpriter 
