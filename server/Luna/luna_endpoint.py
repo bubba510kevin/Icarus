@@ -7,7 +7,10 @@ from functools import wraps
 from flask import Flask, request, jsonify, abort, send_file
 import jwt
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+
+
 import helper
+
 
 JWT_SECRET = os.environ.get("JWT_SECRET", "dev-jwt-secret-change-me")
 JWT_ALGORITHM = "HS256"
@@ -256,6 +259,10 @@ def luna_endpoint3():
     name = request.json.get('file_name')
     send_file(file, as_attachment=True, attachment_filename=name)
 
+@app.route('/luna/icarus/control')
+@token_required
+def luna_endpoint3():
+    pass
 
 
 if __name__ == "__main__":
