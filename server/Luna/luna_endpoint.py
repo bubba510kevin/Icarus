@@ -8,6 +8,7 @@ from flask import Flask, request, jsonify, abort, send_file
 import jwt
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
+import win32pipe, win32file, pywintypes
 
 import helper
 
