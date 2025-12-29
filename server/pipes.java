@@ -1,20 +1,5 @@
-
-
-
-
-public class server {
-
-    public static void main(String[] args) {
-
-    }
-    private static void server() {
-
-    }
-}
-
-
-class PipeServer {
-
+public class pipes {
+    
     static {
         System.loadLibrary("PipeServerDLL"); // Loads PipeServerDLL.dll
     }
@@ -25,7 +10,7 @@ class PipeServer {
     public native void closeServer();
 
     public static void main(String[] args) {
-        PipeServer ps = new PipeServer();
+        pipes ps = new pipes();
 
         if (ps.startServer("\\\\.\\pipe\\MyPipe")) {
             System.out.println("Pipe started.");
@@ -38,4 +23,5 @@ class PipeServer {
             ps.closeServer();
         }
     }
+
 }

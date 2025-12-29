@@ -10,7 +10,7 @@
 
 
 /*
-Saint_Bear same as STRONTIUM
+Saint_Bear same as in STRONTIUM
 Metador true/false for Saint_Bear\\Local\\Robblox folder
 main runs Icarus
 Rhea file downloder
